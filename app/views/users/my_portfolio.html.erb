@@ -2,7 +2,7 @@
 
 <div class="m-3">
   <h3 class="text-center">Search Stocks</h3>
-  <%= form_tag search_stock_path, method: :get do %>
+  <%= form_tag search_stock_path, remote: true, method: :get do %>
     <div class="form-group row justify-content-center">
       <div class="col-9">
         <div class="input-group">
@@ -15,22 +15,6 @@
     </div>
   <% end %>
 </div>
-<% if @stock %>
-  <div class="row justify-content-center m-2">
-    <div class="col-6">
-      <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <strong>Symbol: </strong> <%= @stock.ticker %>
-          </li>
-          <li class="list-group-item">
-            <strong>Name: </strong> <%= @stock.name %>
-          </li>
-          <li class="list-group-item">
-            <strong>Price: </strong> <%= @stock.last_price %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-<% end %>
+<div id="results">
+  
+</div>

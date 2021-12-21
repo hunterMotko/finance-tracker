@@ -1,0 +1,19 @@
+<% if @stock %>
+  <div class="row justify-content-center m-2">
+    <div class="col-6">
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Symbol: </strong> <%= @stock.ticker %>
+          </li>
+          <li class="list-group-item">
+            <strong>Name: </strong> <%= @stock.name %>
+          </li>
+          <li class="list-group-item">
+            <strong>Price: </strong> <%= @stock.last_price %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
