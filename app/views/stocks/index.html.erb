@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h1>General Stock Information</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <h1>Most Active</h1>
+          </tr>
+          <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Exchange</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @most_active.each do |stock| %>
+            <tr>
+              <td><%= stock.symbol %></td>
+              <td><%= stock.company_name %></td>
+              <td><%= stock.iex_realtime_price %></td>
+              <td><%= stock.change %></td>
+              <td><%= stock.primary_exchange %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <h1>Gainers</h1>
+          </tr>
+          <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Exchange</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @gainers.each do |stock| %>
+            <tr>
+              <td><%= stock.symbol %></td>
+              <td><%= stock.company_name %></td>
+              <td><%= stock.iex_realtime_price %></td>
+              <td><%= stock.change %></td>
+              <td><%= stock.primary_exchange %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <h1>Losers</h1>
+          </tr>
+          <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Exchange</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @losers.each do |stock| %>
+            <tr>
+              <td><%= stock.symbol %></td>
+              <td><%= stock.company_name %></td>
+              <td><%= stock.iex_realtime_price %></td>
+              <td><%= stock.change %></td>
+              <td><%= stock.primary_exchange %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <h1>Volume</h1>
+          </tr>
+          <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Exchange</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @iex_volume.each do |stock| %>
+            <tr>
+              <td><%= stock.symbol %></td>
+              <td><%= stock.company_name %></td>
+              <td><%= stock.iex_realtime_price %></td>
+              <td><%= stock.change %></td>
+              <td><%= stock.primary_exchange %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <h1>Precent</h1>
+          </tr>
+          <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Exchange</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @iex_percent.each do |stock| %>
+            <tr>
+              <td><%= stock.symbol %></td>
+              <td><%= stock.company_name %></td>
+              <td><%= stock.iex_realtime_price %></td>
+              <td><%= stock.change %></td>
+              <td><%= stock.primary_exchange %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
