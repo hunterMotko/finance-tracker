@@ -24,8 +24,24 @@ class CryptoController < ApplicationController
   
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'bravenewcoin.p.rapidapi.com'
-    request["x-rapidapi-key"] = '51bb43f7e2msh6437498d6862488p15c11fjsn3de5e0c75047'
+    request["x-rapidapi-key"] = Rails.application.credentials.rapid_api[:key]
   
     @response = http.request(request)
+  end
+
+  def asset_lookup
+    url = URI("https://bravenewcoin.p.rapidapi.com/market-cap?assetId=f1ff77b6-3ab4-4719-9ded-2fc7e71cff1f")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request["authorization"] = "Bearer #{Rails.application.credentials.rapid_api[:token]}"
+    request["x-rapidapi-host"] = 'bravenewcoin.p.rapidapi.com'
+    request["x-rapidapi-key"] = Rails.application.credentials.rapid_api[:key]
+
+    response = http.request(request)
+    puts response.read_body
   end
 end
