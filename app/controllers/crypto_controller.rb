@@ -1,6 +1,6 @@
 class CryptoController < ApplicationController
   def assets
-    @response = CryptoManager::CryptoCreator.call
+    @response = ApiCalls::Crypto.call
     asset = JSON.parse(@response.read_body)
     @length = (asset['content'].length / 100)
     @assets = (params[:page]) ? 

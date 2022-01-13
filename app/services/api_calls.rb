@@ -1,5 +1,5 @@
-module CryptoManager
-  class CryptoCreator < ApplicationService
+module ApiCalls
+  class Crypto < ApplicationService
 
     def call
       api_call
@@ -22,7 +22,10 @@ module CryptoManager
     end
   end
 
-  class StockCreator < ApplicationService
-    
+  class Stock < ApplicationService
+    def call
+      @client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
+        endpoint: 'https://sandbox.iexapis.com/stable')
+    end
   end
 end

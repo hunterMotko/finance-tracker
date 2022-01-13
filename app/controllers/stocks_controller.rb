@@ -1,5 +1,4 @@
 class StocksController < ApplicationController
-  before_action :set_client
   
   def search
     if params[:stock].present?
@@ -23,17 +22,11 @@ class StocksController < ApplicationController
   end
 
   def index
+    @client = ApiCalls::Stock.call
     @most_active = @client.stock_market_list(:mostactive)
     @gainers = @client.stock_market_list(:gainers)
     @losers = @client.stock_market_list(:losers)
     @iex_volume = @client.stock_market_list(:iexvolume)
     @iex_percent = @client.stock_market_list(:iexpercent)
-  end
-
-  private
-
-  def set_client
-    @client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
-      endpoint: 'https://sandbox.iexapis.com/stable')
   end
 end
