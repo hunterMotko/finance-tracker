@@ -21,8 +21,8 @@ class StocksController < ApplicationController
     end
   end
 
-  def index
-    @client = ApiCalls::Stock.call
+  def index(client = ApiCalls::Stock)
+    @client = client.call
     @most_active = @client.stock_market_list(:mostactive)
     @gainers = @client.stock_market_list(:gainers)
     @losers = @client.stock_market_list(:losers)

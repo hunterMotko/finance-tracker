@@ -4,7 +4,7 @@ class Stock < ApplicationRecord
 
   validates :name, :ticker, presence: true
 
-  def self.new_lookup(ticker_symbol)
+  def self.new_lookup(ticker_symbol, client = ApiCalls::Stock.call)
     begin
       new(ticker: ticker_symbol, 
           name: client.company(ticker_symbol).company_name, 
@@ -15,7 +15,7 @@ class Stock < ApplicationRecord
   end
 
   def self.check_db(ticker_sym)
-    where(ticker: ticker_sym).first
+    find_by(ticker: ticker_sym)
   end
   
 end
